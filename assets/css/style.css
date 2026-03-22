@@ -222,7 +222,7 @@ body::after {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: slideFade 24s infinite both;
+  animation: slideFade 36s infinite both;
   z-index: 0;
 }
 
@@ -231,11 +231,11 @@ body::after {
 }
 
 .bg-slide:nth-child(2) {
-  animation-delay: 14s;
+  animation-delay: 17s;
 }
 
 .bg-slide:nth-child(3) {
-  animation-delay: 22s;
+  animation-delay: 29s;
 }
 
 @keyframes slideFade {
@@ -244,15 +244,15 @@ body::after {
     transform: scale(1);
   }
 
-  6% {
+  5.5% {
     opacity: 1;
   }
 
-  25% {
+  16.6% {
     opacity: 1;
   }
 
-  35% {
+  22.2% {
     opacity: 0;
     transform: scale(1.05);
   }
