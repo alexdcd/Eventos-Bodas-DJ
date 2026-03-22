@@ -26,7 +26,8 @@
   --gold-light: #DDB96A;
   --ivory: #F0E4D0;
   --ivory-muted: #B8A898;
-  --serif: 'Bodoni Moda', Georgia, serif;
+  --serif: 'Bodoni Moda', Georgia, serif;       /* hero only */
+  --serif2: 'Playfair Display', Georgia, serif; /* section headings */
   --label: 'Syncopate', sans-serif;
   --body: 'Jost', system-ui, sans-serif;
 }
@@ -246,9 +247,10 @@ body::after {
 }
 .hero-stat:last-child { border-right: none; }
 .hero-stat-num {
-  font-family: var(--serif);
-  font-size: 2.8rem; font-weight: 700;
+  font-family: var(--label);
+  font-size: 2rem; font-weight: 700;
   color: var(--gold); line-height: 1;
+  letter-spacing: 1px;
 }
 .hero-stat-label {
   font-family: var(--label);
@@ -291,7 +293,7 @@ body::after {
 .eyebrow.gold { color: var(--gold); }
 .eyebrow.dim  { color: var(--ink-faint); }
 .h2 {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: clamp(2.2rem, 4.5vw, 3.6rem);
   font-weight: 900; line-height: 1.08;
   letter-spacing: -0.5px;
@@ -323,7 +325,7 @@ body::after {
 .problem-card:last-child { border-right: none; }
 .problem-card:hover { background: var(--cream-deep); }
 .p-num {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 4.5rem; font-weight: 900;
   color: var(--parchment); line-height: 1;
   margin-bottom: 4px;
@@ -332,7 +334,7 @@ body::after {
 .problem-card:hover .p-num { color: rgba(184,75,40,0.12); }
 .p-rule { width: 28px; height: 2px; background: var(--terra); margin-bottom: 20px; }
 .problem-card h3 {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 1.45rem; font-weight: 700; font-style: italic;
   color: var(--ink); margin-bottom: 12px; line-height: 1.2;
 }
@@ -350,7 +352,7 @@ body::after {
   padding-bottom: 64px; margin-bottom: 64px;
 }
 .sol-big {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: clamp(2.8rem, 6vw, 5.5rem);
   font-weight: 900; font-style: italic;
   color: var(--ivory); line-height: 1.0; flex: 1;
@@ -379,7 +381,7 @@ body::after {
   margin-bottom: 24px;
 }
 .sol-feat h3 {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 1.3rem; font-weight: 700; font-style: italic;
   color: var(--ivory); margin-bottom: 12px; line-height: 1.2;
 }
@@ -401,7 +403,7 @@ body::after {
   width: 54px; height: 54px;
   border: 2px solid var(--terra);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 1.4rem; font-weight: 700; font-style: italic;
   color: var(--terra); flex-shrink: 0;
   background: var(--cream); position: relative; z-index: 1;
@@ -412,7 +414,7 @@ body::after {
 }
 .step:last-child .step-line { display: none; }
 .step h3 {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 1.4rem; font-weight: 700; font-style: italic;
   color: var(--ink); margin-bottom: 10px;
 }
@@ -448,7 +450,7 @@ body::after {
   margin-bottom: 20px;
 }
 .exp-card h3 {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 1.4rem; font-weight: 700; font-style: italic;
   color: var(--ivory); margin-bottom: 12px; line-height: 1.2;
 }
@@ -482,7 +484,7 @@ body::after {
   box-shadow: 0 14px 40px rgba(26,18,8,0.09);
 }
 .test-qm {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 3.5rem; font-weight: 900; font-style: italic;
   color: var(--terra); line-height: 0.8;
   margin-bottom: 20px; opacity: 0.25; display: block;
@@ -503,7 +505,7 @@ body::after {
 .test-av {
   width: 42px; height: 42px; background: var(--dark);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-family: var(--serif2); font-style: italic; font-weight: 700;
   color: var(--gold); font-size: 0.8rem; flex-shrink: 0;
 }
 .test-name { font-weight: 600; font-size: 0.9rem; color: var(--ink); }
@@ -551,7 +553,7 @@ body::after {
   color: var(--gold); margin-bottom: 8px;
 }
 .artist-name {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 1.6rem; font-weight: 700; font-style: italic;
   color: var(--ivory); margin-bottom: 6px; line-height: 1.1;
 }
@@ -592,7 +594,7 @@ body::after {
 }
 .pricing-body { padding: 48px; }
 .pricing-hl {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: 2.2rem; font-weight: 900; font-style: italic;
   color: var(--ink); margin-bottom: 14px; line-height: 1.1;
 }
@@ -671,7 +673,7 @@ body::after {
 }
 .final-cta-content { position: relative; z-index: 2; }
 .final-cta h2 {
-  font-family: var(--serif);
+  font-family: var(--serif2);
   font-size: clamp(2.8rem, 6vw, 5.2rem);
   font-weight: 900; font-style: italic;
   color: var(--ivory); line-height: 1.05; margin-bottom: 24px;
@@ -829,7 +831,7 @@ body::after {
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">+200</div>
+        <div class="hero-stat-num">+450</div>
         <div class="hero-stat-label">Bodas realizadas</div>
       </div>
       <div class="hero-stat">
@@ -837,7 +839,7 @@ body::after {
         <div class="hero-stat-label">Pistas llenas</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num">4.9★</div>
+        <div class="hero-stat-num">4.9 <span style="font-size:1rem;vertical-align:middle;">★</span></div>
         <div class="hero-stat-label">Valoración media</div>
       </div>
     </div>
@@ -1165,7 +1167,7 @@ body::after {
       <div class="trust-row">
         <div class="trust-item">Sin compromiso</div>
         <div class="trust-item">Respuesta en 24h</div>
-        <div class="trust-item">+200 bodas realizadas</div>
+        <div class="trust-item">+450 bodas realizadas</div>
       </div>
     </div>
   </div>
@@ -1198,7 +1200,7 @@ body::after {
 // ── ANNOUNCEMENT BAR (textContent only — no innerHTML) ──
 (function() {
   var items = [
-    ['+200', ' bodas realizadas'],
+    ['+450', ' bodas realizadas'],
     ['DJs residentes de Pacha & Kapital', ''],
     ['4.9\u2605', ' valoración media'],
     ['Respuesta en menos de ', '24h'],
