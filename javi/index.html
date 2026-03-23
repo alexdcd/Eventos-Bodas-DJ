@@ -242,18 +242,28 @@
       z-index: 4;
     }
 
-    .artist-img-badge-label {
-      font-family: var(--label);
-      font-size: 0.46rem;
-      letter-spacing: 2.5px;
-      color: var(--gold);
-      margin-bottom: 4px;
+    .artist-img-badge-name {
+      font-family: var(--serif2);
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ivory);
+      margin-bottom: 6px;
+      line-height: 1;
     }
 
-    .artist-img-badge-venues {
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: var(--ivory-muted);
+    .artist-img-badge-stats {
+      font-family: var(--label);
+      font-size: 0.44rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .artist-img-badge-sep {
+      color: var(--dark-border);
     }
 
     /* ── BIO ── */
@@ -763,8 +773,12 @@
           <div class="artist-img-corner bl"></div>
           <div class="artist-img-corner br"></div>
           <div class="artist-img-badge">
-            <div class="artist-img-badge-label">Residente en</div>
-            <div class="artist-img-badge-venues">Pacha · Kapital · Teatro Barceló</div>
+            <div class="artist-img-badge-name">Javier Vilariño</div>
+            <div class="artist-img-badge-stats">
+              <span>+18 años como DJ</span>
+              <span class="artist-img-badge-sep">·</span>
+              <span>+200 bodas</span>
+            </div>
           </div>
         </div>
       </div>
