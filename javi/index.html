@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javi · DJ Residente — EventoUnico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,700;1,6..96,900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Syncopate:wght@400;700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+
+    /* ── ARTIST HERO ── */
+    .artist-hero {
+      min-height: 100vh;
+      background: var(--black);
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .artist-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 140px 32px 80px;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .artist-hero-back {
+      font-family: var(--label);
+      font-size: 0.52rem;
+      letter-spacing: 3px;
+      color: var(--ivory-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 48px;
+      transition: color 0.3s ease;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .artist-hero-back:hover {
+      color: var(--gold);
+    }
+
+    .artist-hero-eyebrow {
+      font-family: var(--label);
+      font-size: 0.52rem;
+      letter-spacing: 4px;
+      color: var(--terra-light);
+      display: block;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.25s;
+    }
+
+    .artist-hero-name {
+      font-family: var(--serif);
+      font-size: clamp(5rem, 12vw, 10rem);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--ivory);
+      line-height: 0.9;
+      letter-spacing: -3px;
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: fadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+    }
+
+    .artist-hero-title {
+      font-family: var(--label);
+      font-size: 0.54rem;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.6s;
+    }
+
+    .artist-hero-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ivory-muted);
+      max-width: 440px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.75s;
+    }
+
+    .artist-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.9s;
+    }
+
+    .artist-tag {
+      font-family: var(--label);
+      font-size: 0.47rem;
+      letter-spacing: 2px;
+      color: var(--ivory-muted);
+      border: 1px solid var(--dark-border);
+      padding: 6px 14px;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .artist-tag:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .artist-hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 1.05s;
+    }
+
+    .artist-hero-stats {
+      border-top: 1px solid var(--dark-border);
+      padding-top: 32px;
+      display: flex;
+      gap: 48px;
+      margin-top: 48px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 1.2s;
+    }
+
+    .artist-hero-stat-num {
+      font-family: var(--label);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .artist-hero-stat-label {
+      font-family: var(--label);
+      font-size: 0.46rem;
+      letter-spacing: 2.5px;
+      color: var(--ivory-muted);
+      margin-top: 6px;
+    }
+
+    /* Image side */
+    .artist-hero-img {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
+    }
+
+    .artist-img-frame {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .artist-img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      pointer-events: none;
+    }
+
+    .artist-img-placeholder-icon {
+      width: 72px;
+      height: 72px;
+      border: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-border);
+      font-size: 1.8rem;
+    }
+
+    .artist-img-placeholder-text {
+      font-family: var(--label);
+      font-size: 0.46rem;
+      letter-spacing: 3px;
+      color: var(--dark-border);
+    }
+
+    .artist-img-corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-color: var(--gold);
+      border-style: solid;
+      opacity: 0.45;
+    }
+
+    .artist-img-corner.tl { top: 14px; left: 14px; border-width: 1px 0 0 1px; }
+    .artist-img-corner.tr { top: 14px; right: 14px; border-width: 1px 1px 0 0; }
+    .artist-img-corner.bl { bottom: 14px; left: 14px; border-width: 0 0 1px 1px; }
+    .artist-img-corner.br { bottom: 14px; right: 14px; border-width: 0 1px 1px 0; }
+
+    .artist-img-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(12, 9, 8, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--dark-border);
+      padding: 14px 20px;
+      z-index: 4;
+    }
+
+    .artist-img-badge-label {
+      font-family: var(--label);
+      font-size: 0.46rem;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .artist-img-badge-venues {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--ivory-muted);
+    }
+
+    /* ── BIO ── */
+    .artist-bio {
+      background: var(--cream);
+    }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 80px;
+      align-items: start;
+      margin-top: 64px;
+    }
+
+    .bio-text h3 {
+      font-family: var(--serif2);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+
+    .bio-text p {
+      font-size: 0.98rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+    }
+
+    .bio-text p:last-child { margin-bottom: 0; }
+
+    .bio-facts {
+      border: 1px solid var(--parchment);
+      background: white;
+    }
+
+    .bio-fact-header {
+      background: var(--ink);
+      padding: 16px 24px;
+      font-family: var(--label);
+      font-size: 0.5rem;
+      letter-spacing: 3px;
+      color: var(--ivory-muted);
+    }
+
+    .bio-fact-item {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    .bio-fact-item:last-child { border-bottom: none; }
+
+    .bio-fact-label {
+      font-family: var(--label);
+      font-size: 0.44rem;
+      letter-spacing: 2px;
+      color: var(--terra);
+      margin-bottom: 4px;
+    }
+
+    .bio-fact-value {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    /* ── STATS STRIP ── */
+    .artist-stats-strip {
+      background: var(--dark);
+      padding: 0;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .stat-block {
+      padding: 52px 32px;
+      border-right: 1px solid var(--dark-border);
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+
+    .stat-block:last-child { border-right: none; }
+
+    .stat-block:hover { background: var(--coal); }
+
+    .stat-block-num {
+      font-family: var(--label);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .stat-block-label {
+      font-family: var(--label);
+      font-size: 0.48rem;
+      letter-spacing: 2.5px;
+      color: var(--ivory-muted);
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    /* ── MUSIC & STYLE ── */
+    .artist-music {
+      background: var(--cream);
+    }
+
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+      background: var(--parchment);
+    }
+
+    .music-card {
+      background: var(--cream);
+      padding: 44px 36px;
+      transition: background 0.3s ease;
+    }
+
+    .music-card:hover { background: var(--cream-deep); }
+
+    .music-card-num {
+      font-family: var(--serif2);
+      font-size: 3.5rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--parchment);
+      line-height: 1;
+      margin-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    .music-card:hover .music-card-num { color: rgba(184, 75, 40, 0.1); }
+
+    .music-card-rule {
+      width: 28px;
+      height: 2px;
+      background: var(--terra);
+      margin-bottom: 20px;
+    }
+
+    .music-card-name {
+      font-family: var(--serif2);
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .music-card-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--ink-muted);
+    }
+
+    /* ── SESSIONS ── */
+    .artist-sessions {
+      background: var(--black);
+    }
+
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 64px;
+    }
+
+    .sessions-text h3 {
+      font-family: var(--serif2);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ivory);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .sessions-text h3 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    .sessions-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--ivory-muted);
+      margin-bottom: 32px;
+    }
+
+    .sessions-player {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 56px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+      min-height: 260px;
+    }
+
+    .sessions-player-icon {
+      width: 64px;
+      height: 64px;
+      border: 1px solid var(--dark-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.3rem;
+    }
+
+    .sessions-player-label {
+      font-family: var(--label);
+      font-size: 0.5rem;
+      letter-spacing: 3px;
+      color: var(--ivory-muted);
+    }
+
+    .sessions-player-note {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--ivory-muted);
+      opacity: 0.4;
+      font-style: italic;
+    }
+
+    /* ── EVENT TYPES ── */
+    .artist-events {
+      background: var(--dark);
+    }
+
+    .events-list {
+      margin-top: 64px;
+      border: 1px solid var(--dark-border);
+    }
+
+    .event-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      align-items: center;
+      gap: 36px;
+      padding: 36px 40px;
+      border-bottom: 1px solid var(--dark-border);
+      transition: background 0.3s ease;
+    }
+
+    .event-item:last-child { border-bottom: none; }
+    .event-item:hover { background: var(--coal); }
+
+    .event-num {
+      font-family: var(--serif2);
+      font-size: 2.2rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--dark-border);
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+
+    .event-item:hover .event-num { color: rgba(201, 147, 58, 0.2); }
+
+    .event-info h3 {
+      font-family: var(--serif2);
+      font-size: 1.3rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--ivory);
+      margin-bottom: 6px;
+    }
+
+    .event-info p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--ivory-muted);
+      line-height: 1.65;
+    }
+
+    .event-badge {
+      font-family: var(--label);
+      font-size: 0.47rem;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      border: 1px solid rgba(201, 147, 58, 0.3);
+      padding: 6px 14px;
+      white-space: nowrap;
+    }
+
+    /* ── ARTIST CTA ── */
+    .artist-cta {
+      background: var(--black);
+      padding: 140px 0;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .artist-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(circle, rgba(184, 75, 40, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .artist-cta h2 {
+      font-family: var(--serif2);
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .artist-cta h2 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .artist-cta p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ivory-muted);
+      max-width: 480px;
+      margin: 0 auto 48px;
+      line-height: 1.75;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .artist-hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding-top: 120px;
+      }
+
+      .artist-hero-img {
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .bio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-block:nth-child(2) { border-right: none; }
+      .stat-block:nth-child(n+3) { border-top: 1px solid var(--dark-border); }
+
+      .music-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sessions-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .event-item {
+        grid-template-columns: 56px 1fr;
+        gap: 20px;
+      }
+
+      .event-badge { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .artist-hero-name {
+        font-size: clamp(4.5rem, 20vw, 7rem);
+        letter-spacing: -2px;
+      }
+
+      .artist-hero-stats {
+        gap: 28px;
+      }
+
+      .event-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .event-num { display: none; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce">
+    <div class="announce-track" id="announceTrack"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-dot"></div>
+        EventoUnico
+      </a>
+      <a href="#contacto" class="nav-cta">Solicitar Presupuesto</a>
+    </div>
+  </nav>
+
+  <!-- ARTIST HERO -->
+  <section class="artist-hero">
+    <div class="artist-hero-inner">
+
+      <!-- Text Side -->
+      <div class="artist-hero-text">
+        <a href="/" class="artist-hero-back">← ARTISTAS</a>
+        <span class="artist-hero-eyebrow">DJ Residente · EventoUnico · Madrid</span>
+        <h1 class="artist-hero-name">Javi</h1>
+        <div class="artist-hero-title">DJ & Productor · 12 Años de Trayectoria</div>
+        <p class="artist-hero-desc">De las cabinas de Pacha y Kapital a tu celebración. Javi lleva más de una década construyendo noches que la gente recuerda — y esa misma energía es la que trae a cada evento.</p>
+        <div class="artist-hero-tags">
+          <span class="artist-tag">House</span>
+          <span class="artist-tag">Deep House</span>
+          <span class="artist-tag">Tech House</span>
+          <span class="artist-tag">Pop Premium</span>
+          <span class="artist-tag">R&amp;B</span>
+          <span class="artist-tag">Música Española</span>
+        </div>
+        <div class="artist-hero-btns">
+          <a href="#contacto" class="btn-terra">Reservar a Javi</a>
+          <a href="#sesiones" class="btn-outline">Escuchar Sesiones</a>
+        </div>
+        <div class="artist-hero-stats">
+          <div>
+            <div class="artist-hero-stat-num">+200</div>
+            <div class="artist-hero-stat-label">Bodas · Eventos</div>
+          </div>
+          <div>
+            <div class="artist-hero-stat-num">12</div>
+            <div class="artist-hero-stat-label">Años de Carrera</div>
+          </div>
+          <div>
+            <div class="artist-hero-stat-num">4.9★</div>
+            <div class="artist-hero-stat-label">Valoración Media</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Side -->
+      <div class="artist-hero-img">
+        <div class="artist-img-frame">
+          <!-- IMAGE PLACEHOLDER — sustituir por: <img src="foto-javi.jpg" alt="DJ Javi" style="width:100%;height:100%;object-fit:cover;"> -->
+          <div class="artist-img-placeholder">
+            <div class="artist-img-placeholder-icon">▣</div>
+            <div class="artist-img-placeholder-text">FOTO DEL ARTISTA</div>
+          </div>
+          <div class="artist-img-corner tl"></div>
+          <div class="artist-img-corner tr"></div>
+          <div class="artist-img-corner bl"></div>
+          <div class="artist-img-corner br"></div>
+          <div class="artist-img-badge">
+            <div class="artist-img-badge-label">Residente en</div>
+            <div class="artist-img-badge-venues">Pacha · Kapital · Teatro Barceló</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MARQUEE DIVIDER -->
+  <div class="marquee-bar">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <!-- BIO -->
+  <section class="artist-bio sp">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow">El artista</span>
+      </div>
+      <div class="bio-grid">
+        <div class="bio-text reveal">
+          <h3>Club de primera división.<br>La energía que transforma una noche.</h3>
+          <p>Javi empezó en los clubs underground de Madrid con 19 años, y en menos de una década se convirtió en residente habitual de las salas más exigentes de la capital. Pacha, Kapital, Teatro Barceló, Ramses, Olivia Valere — espacios donde un set no funciona si no sabes exactamente qué quiere la gente en cada momento.</p>
+          <p>Esa es la habilidad que lo define: leer la sala. No poner canciones, sino construir una noche. Saber cuándo crear intimidad y cuándo soltar el track que hace que todo el mundo levante los brazos al mismo tiempo. Esa lectura no se aprende en YouTube — se gana actuación tras actuación, en espacios donde el error no tiene segunda oportunidad.</p>
+          <p>Para Javi, una boda no es menos exigente que un club — es diferente. Y esa diferencia la conoce a la perfección. Lleva el mismo rigor y la misma preparación que a un evento de 2.000 personas, pero adaptado a vosotros: vuestros gustos, vuestra gente, vuestros momentos especiales.</p>
+        </div>
+        <div class="bio-facts reveal">
+          <div class="bio-fact-header">PERFIL DEL ARTISTA</div>
+          <div class="bio-fact-item">
+            <div class="bio-fact-label">TRAYECTORIA</div>
+            <div class="bio-fact-value">12 años en activo</div>
+          </div>
+          <div class="bio-fact-item">
+            <div class="bio-fact-label">BASE</div>
+            <div class="bio-fact-value">Madrid, España</div>
+          </div>
+          <div class="bio-fact-item">
+            <div class="bio-fact-label">SALAS PRINCIPALES</div>
+            <div class="bio-fact-value">Pacha, Kapital, Teatro Barceló, Ramses</div>
+          </div>
+          <div class="bio-fact-item">
+            <div class="bio-fact-label">EVENTOS INTERNACIONALES</div>
+            <div class="bio-fact-value">Italia, Suiza, Alemania, Malta</div>
+          </div>
+          <div class="bio-fact-item">
+            <div class="bio-fact-label">GÉNERO PRINCIPAL</div>
+            <div class="bio-fact-value">House · Deep House · Tech House</div>
+          </div>
+          <div class="bio-fact-item">
+            <div class="bio-fact-label">ESPECIALIDAD BODAS</div>
+            <div class="bio-fact-value">Desde 2015 · +200 celebraciones</div>
+          </div>
+          <div class="bio-fact-item">
+            <div class="bio-fact-label">VALORACIÓN MEDIA</div>
+            <div class="bio-fact-value">4.9 / 5 ★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="artist-stats-strip">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-block reveal">
+          <div class="stat-block-num">+200</div>
+          <div class="stat-block-label">Bodas &<br>Eventos Privados</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-block-num">12</div>
+          <div class="stat-block-label">Años en las<br>Mejores Salas</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-block-num">+15</div>
+          <div class="stat-block-label">Venues de<br>Referencia</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-block-num">4</div>
+          <div class="stat-block-label">Países en los<br>que ha Actuado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MUSIC & STYLE -->
+  <section class="artist-music sp">
+    <div class="container">
+      <div class="reveal">
+        <span class="eyebrow">Estilo musical</span>
+        <h2 class="h2 ink">Una noche que empieza suave<br>y acaba <em>legendaria</em></h2>
+        <p class="lead">Javi no pincha un género — construye una progresión. Cada celebración tiene su propio arco musical, diseñado desde la primera conversación contigo.</p>
+      </div>
+      <div class="music-grid">
+        <div class="music-card reveal">
+          <div class="music-card-num">01</div>
+          <div class="music-card-rule"></div>
+          <div class="music-card-name">La Cena</div>
+          <p class="music-card-desc">Música de ambiente que invita a la conversación. Deep house elegante, jazz contemporáneo, soul suave. El tono perfecto para que vuestra gente se encuentre y la velada fluya sin esfuerzo.</p>
+        </div>
+        <div class="music-card reveal">
+          <div class="music-card-num">02</div>
+          <div class="music-card-rule"></div>
+          <div class="music-card-name">El Arranque</div>
+          <p class="music-card-desc">Pop premium, éxitos internacionales, los temas que todo el mundo reconoce. El primer baile, el corte de tarta, los primeros pasos en la pista. La chispa que enciende la noche.</p>
+        </div>
+        <div class="music-card reveal">
+          <div class="music-card-num">03</div>
+          <div class="music-card-rule"></div>
+          <div class="music-card-name">La Fiesta</div>
+          <p class="music-card-desc">House, tech house, remixes y mashups exclusivos propios. La energía que convierte una boda en una noche que se recuerda durante años. Nadie se va antes de tiempo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SESSIONS -->
+  <section class="artist-sessions sp" id="sesiones">
+    <div class="container">
+      <div class="sessions-grid">
+        <div class="sessions-text reveal">
+          <span class="eyebrow gold">Sesiones</span>
+          <h3>Escucha antes de<br>decidir. El sonido de <em>Javi.</em></h3>
+          <p>Antes de reservar, escucha. Cada sesión es una muestra real de cómo trabaja Javi en directo — cómo construye la energía, cómo mezcla, cómo lleva la noche de un momento al siguiente. Sin trampa ni cartón.</p>
+          <a href="#contacto" class="link-underline">SOLICITAR SESIÓN COMPLETA →</a>
+        </div>
+        <div class="reveal">
+          <div class="sessions-player">
+            <div class="sessions-player-icon">▶</div>
+            <div class="sessions-player-label">SESIONES EN DIRECTO</div>
+            <p class="sessions-player-note">Aquí irá el embed de Mixcloud / Soundcloud</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT TYPES -->
+  <section class="artist-events sp">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:580px; margin:0 auto;">
+        <span class="eyebrow gold">Tipos de evento</span>
+        <h2 class="h2 cream">Para qué momentos<br>puedes <em>reservar a Javi</em></h2>
+      </div>
+      <div class="events-list reveal">
+        <div class="event-item">
+          <div class="event-num">01</div>
+          <div class="event-info">
+            <h3>Bodas &amp; Celebraciones</h3>
+            <p>Su especialidad. Conoce el flujo de una boda a la perfección: el cóctel, la cena, el primer baile y la fiesta hasta el final. Planificación musical completa incluida desde la primera reunión.</p>
+          </div>
+          <div class="event-badge">Especialidad</div>
+        </div>
+        <div class="event-item">
+          <div class="event-num">02</div>
+          <div class="event-info">
+            <h3>Eventos Corporativos</h3>
+            <p>Ha trabajado con Real Madrid, BMW, Coca Cola, Mutua Madrid Open y Vodafone. Sabe gestionar ambientes mixtos y audiencias exigentes con criterio y experiencia.</p>
+          </div>
+          <div class="event-badge">Corporativo</div>
+        </div>
+        <div class="event-item">
+          <div class="event-num">03</div>
+          <div class="event-info">
+            <h3>Fiestas Privadas &amp; Cumpleaños</h3>
+            <p>Desde una reunión íntima de 50 personas hasta eventos de varios cientos de invitados. Flexibilidad total en cuanto a espacio, duración y estilo musical.</p>
+          </div>
+          <div class="event-badge">Privado</div>
+        </div>
+        <div class="event-item">
+          <div class="event-num">04</div>
+          <div class="event-info">
+            <h3>Clubs &amp; Residencias</h3>
+            <p>Cuando necesitas a alguien que maneje una sala con autoridad. Sets de club completos con la técnica y la energía de quien lleva más de una década en las mejores cabinas de Madrid.</p>
+          </div>
+          <div class="event-badge">Club</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials sp">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:580px; margin:0 auto;">
+        <span class="eyebrow">Lo que dicen sobre Javi</span>
+        <h2 class="h2 ink">Noches reales.<br><em>Recuerdos que no se olvidan.</em></h2>
+      </div>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <span class="test-qm">"</span>
+          <span class="test-stars">★★★★★</span>
+          <p class="test-text">"Javi fue un elemento clave en nuestra boda. Desde la reunión previa, la confianza fue inmediata. La pista no se vació en toda la noche — y eso lo dice todo."</p>
+          <div class="test-author">
+            <div class="test-av">M&amp;J</div>
+            <div>
+              <div class="test-name">Marta &amp; Javier</div>
+              <div class="test-detail">Boda en Finca El Olivar · Sep 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card reveal">
+          <span class="test-qm">"</span>
+          <span class="test-stars">★★★★★</span>
+          <p class="test-text">"Somos muy exigentes con la música y teníamos miedo de que una boda fuera demasiado conservadora. Javi entendió exactamente lo que queríamos y creó una noche de club en nuestra boda. Perfecto."</p>
+          <div class="test-author">
+            <div class="test-av">L&amp;A</div>
+            <div>
+              <div class="test-name">Luis &amp; Andrea</div>
+              <div class="test-detail">Boda en Cigarral de las Mercedes · Jun 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card reveal">
+          <span class="test-qm">"</span>
+          <span class="test-stars">★★★★★</span>
+          <p class="test-text">"Le pedimos algo difícil: mezclar flamenco moderno con house para una audiencia muy heterogénea. Lo hizo de forma magistral. Tres meses después, nuestros invitados siguen hablando de ello."</p>
+          <div class="test-author">
+            <div class="test-av">C&amp;R</div>
+            <div>
+              <div class="test-name">Carmen &amp; Rafael</div>
+              <div class="test-detail">Boda en Real Jardín Botánico · Oct 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTIST CTA -->
+  <section class="artist-cta" id="contacto">
+    <div class="container">
+      <div class="final-cta-content reveal">
+        <span class="eyebrow gold">¿Listo para reservar?</span>
+        <h2>Javi está disponible<br>para <em>tu celebración</em></h2>
+        <p>Cuéntanos tu fecha y tu visión. En menos de 24 horas sabrás si Javi está disponible y recibirás una propuesta personalizada — sin compromiso, sin letra pequeña.</p>
+        <a href="#" class="btn-terra"
+          onclick="alert('Aquí iría el formulario de contacto o Calendly'); return false;">Consultar Disponibilidad de Javi</a>
+        <div class="trust-row">
+          <div class="trust-item">Sin compromiso</div>
+          <div class="trust-item">Respuesta en 24h</div>
+          <div class="trust-item">+200 bodas realizadas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo" style="text-decoration:none;">EventoUnico</a>
+        <div class="footer-links">
+          <a href="/">Inicio</a>
+          <a href="/artistas">Artistas</a>
+          <a href="/#precio">Presupuesto</a>
+          <a href="#contacto">Contacto</a>
+          <a href="#">Política de Privacidad</a>
+        </div>
+      </div>
+      <div class="footer-copy">© 2026 EventoUnico. DJ Profesional para Bodas y Eventos Exclusivos. Madrid.</div>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE -->
+  <div class="sticky-mobile" id="stickyCta">
+    <a href="#contacto">Reservar a Javi</a>
+    <div class="sticky-sub">Consulta disponibilidad · Sin compromiso</div>
+  </div>
+
+  <script>
+    // ── ANNOUNCEMENT BAR ──
+    (function () {
+      var items = [
+        ['+200', ' bodas realizadas'],
+        ['DJ Residente Pacha & Kapital', ''],
+        ['12', ' años de trayectoria'],
+        ['4.9★★★★★', ' valoración media'],
+        ['Remixes y mashups exclusivos propios', ''],
+        ['Respuesta en menos de ', '24h'],
+      ];
+      var track = document.getElementById('announceTrack');
+      var doubled = items.concat(items);
+      doubled.forEach(function (pair) {
+        var wrap = document.createElement('span');
+        wrap.className = 'a-item';
+        if (pair[1]) {
+          var strong = document.createElement('strong');
+          strong.textContent = pair[0];
+          wrap.appendChild(strong);
+          wrap.appendChild(document.createTextNode(pair[1]));
+        } else {
+          wrap.textContent = pair[0];
+        }
+        track.appendChild(wrap);
+        var sep = document.createElement('span');
+        sep.className = 'a-sep';
+        sep.textContent = '\u00b7';
+        track.appendChild(sep);
+      });
+    })();
+
+    // ── MARQUEE VENUES ──
+    (function () {
+      var venues = ['PACHA MADRID', 'KAPITAL', 'TEATRO BARCELÓ', 'RAMSES', 'OLIVIA VALERE', 'ESLAVA', 'REAL MADRID', 'BMW', 'MUTUA MADRID OPEN', 'PATIO DE LEONES', 'KAVE', 'FORTUNY'];
+      var track = document.getElementById('marqueeTrack');
+      var doubled = venues.concat(venues);
+      doubled.forEach(function (v) {
+        var s = document.createElement('span'); s.className = 'm-item'; s.textContent = v; track.appendChild(s);
+        var d = document.createElement('span'); d.className = 'm-sep'; d.textContent = '\u00b7'; track.appendChild(d);
+      });
+    })();
+
+    // ── NAV SCROLL ──
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── REVEAL ON SCROLL ──
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+
+    // ── STICKY MOBILE ──
+    var stickyCta = document.getElementById('stickyCta');
+    stickyCta.style.transform = 'translateY(100%)';
+    stickyCta.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+    window.addEventListener('scroll', function () {
+      if (window.innerWidth <= 900)
+        stickyCta.style.transform = window.scrollY > 400 ? 'translateY(0)' : 'translateY(100%)';
+    }, { passive: true });
+  </script>
+
+</body>
+
+</html>
